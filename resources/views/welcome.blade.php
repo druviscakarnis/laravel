@@ -38,8 +38,27 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <input type="text" name="name" placeholder="Username">
+                <input type="text" name="pw" placeholder="Password">
+                <input type="submit" name="submit" value="Login">
             </div>
         </div>
+        <?php
+            $temp_username = "";
+            $temp_password = "";
+            $db_conn = mysqli_connect('127.0.0.1','root','','laravel_db');
+
+            if(isset($_POST['submit'])){
+                $temp_username = ($_GET['name']);
+                $temp_password = ($_GET['pw']);
+            $query = "SELECT username,password FROM user_datas WHERE username = '$temp_username' AND password = '$temp_password'";
+            $res = mysqli_query($db_conn,$query);
+            if(mysqli_num_rows($res) > 0){
+                print "Veikmīgi!";
+            }
+
+
+            }
+        ?>
     </body>
 </html>
