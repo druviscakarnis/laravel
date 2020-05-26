@@ -37,6 +37,7 @@
     </head>
         <div class="container">
             <div class="content">
+
                 <input type="text" name="name" id="name" placeholder="Username">
                 <input type="text" name="pw" id = "pw" placeholder="Password">
                 <input type="submit" value="Login" onclick="myFunction(document.getElementById('name').value,document.getElementById('pw').value)">
@@ -44,8 +45,12 @@
         </div>
         <script type="text/javascript">
             function myFunction(name,pw){
+                var base = '{!! route('authCheck') !!}';
 
-                window.location.href = "{{ route('authCheck')}}";
+                var url = base+'?name='+name+'&pw='+pw;
+
+                window.location.href = url;
+
             }
         </script>
     </body>

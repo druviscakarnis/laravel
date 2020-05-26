@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/authCheck','login_controller@checkAuth')->name('authCheck');
-
 Route::get('/login', function(){
     return view ('login');
 }) ->name('login');
