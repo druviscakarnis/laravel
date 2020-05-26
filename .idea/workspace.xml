@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -90,7 +90,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -98,7 +98,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\laravel\resources\views" />
+      <recent name="C:\xampp\htdocs\laravel\app\Http\Controllers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPSpec.phpspec.yml">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -118,7 +124,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590392988720</updated>
-      <workItem from="1590392994463" duration="5289000" />
+      <workItem from="1590392994463" duration="7645000" />
+      <workItem from="1590404286955" duration="12294000" />
+      <workItem from="1590473162052" duration="9649000" />
     </task>
     <servers />
   </component>
@@ -126,9 +134,21 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1139" y="437" key="NewPhpFileDialog" timestamp="1590395869249">
+    <state x="739" y="242" key="NewPhpClassDialog" timestamp="1590473571497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1139" y="437" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590395869249" />
+    <state x="739" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590473571497" />
+    <state x="1139" y="437" key="NewPhpFileDialog" timestamp="1590411506694">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1139" y="437" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590411506694" />
+    <state x="1449" y="262" key="run.anything.popup" timestamp="1590410055687">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1449" y="262" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590410055687" />
+    <state x="1131" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1590479056009">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1131" y="236" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590479056009" />
   </component>
 </project>

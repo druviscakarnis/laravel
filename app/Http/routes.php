@@ -14,6 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/',login() {
-    return
-}
+Route::get('/authCheck','login_controller@checkAuth')->name('authCheck');
+
+Route::get('/login', function(){
+    return view ('login');
+}) ->name('login');
+
+Route::get('/login_f', function(){
+    return view ('login_f');
+}) ->name('login_f');

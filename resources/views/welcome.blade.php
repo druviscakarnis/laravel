@@ -35,30 +35,18 @@
             }
         </style>
     </head>
-    <body>
         <div class="container">
             <div class="content">
-                <input type="text" name="name" placeholder="Username">
-                <input type="text" name="pw" placeholder="Password">
-                <input type="submit" name="submit" value="Login">
+                <input type="text" name="name" id="name" placeholder="Username">
+                <input type="text" name="pw" id = "pw" placeholder="Password">
+                <input type="submit" value="Login" onclick="myFunction(document.getElementById('name').value,document.getElementById('pw').value)">
             </div>
         </div>
-        <?php
-            $temp_username = "";
-            $temp_password = "";
-            $db_conn = mysqli_connect('127.0.0.1','root','','laravel_db');
+        <script type="text/javascript">
+            function myFunction(name,pw){
 
-            if(isset($_POST['submit'])){
-                $temp_username = ($_GET['name']);
-                $temp_password = ($_GET['pw']);
-            $query = "SELECT username,password FROM user_datas WHERE username = '$temp_username' AND password = '$temp_password'";
-            $res = mysqli_query($db_conn,$query);
-            if(mysqli_num_rows($res) > 0){
-                print "Veikmīgi!";
+                window.location.href = "{{ route('authCheck')}}";
             }
-
-
-            }
-        ?>
+        </script>
     </body>
 </html>
