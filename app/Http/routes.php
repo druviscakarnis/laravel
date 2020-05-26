@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/authCheck','login_controller@checkAuth')->name('authCheck');
+Route::get('/register','reg_controller@addUser')->name('register');
 Route::get('/login', function(){
     return view ('login');
 }) ->name('login');

@@ -40,17 +40,22 @@
 
                 <input type="text" name="name" id="name" placeholder="Username">
                 <input type="text" name="pw" id = "pw" placeholder="Password">
-                <input type="submit" value="Login" onclick="myFunction(document.getElementById('name').value,document.getElementById('pw').value)">
+                <input type="submit" value="Login" onclick="login(document.getElementById('name').value,document.getElementById('pw').value)">
+                <input type="submit" value="Register" onclick="register(document.getElementById('name').value,document.getElementById('pw').value)">
             </div>
         </div>
         <script type="text/javascript">
-            function myFunction(name,pw){
+            function login(name,pw){
                 var base = '{!! route('authCheck') !!}';
-
                 var url = base+'?name='+name+'&pw='+pw;
 
                 window.location.href = url;
+            }
+            function register(name,pw){
+                var base = '{!! route('register') !!}';
+                var url = base+'?name='+name+'&pw='+pw;
 
+                window.location.href = url;
             }
         </script>
     </body>
