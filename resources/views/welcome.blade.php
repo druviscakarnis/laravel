@@ -40,8 +40,8 @@
 
                 <input type="text" name="name" id="name" placeholder="Username">
                 <input type="text" name="pw" id = "pw" placeholder="Password">
-                <input type="submit" value="Login" onclick="login(document.getElementById('name').value,document.getElementById('pw').value)">
-                <input type="submit" value="Register" onclick="register(document.getElementById('name').value,document.getElementById('pw').value)">
+                <input type="submit" name="login" value="Login" onclick="login(document.getElementById('name').value,document.getElementById('pw').value)">
+                <input type="submit" name="register" value="Register" onclick="register(document.getElementById('name').value,document.getElementById('pw').value)">
             </div>
         </div>
         <script type="text/javascript">

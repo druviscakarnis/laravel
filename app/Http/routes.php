@@ -10,8 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
+Route::get('/','table_controller@show')->name('table');
+Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/authCheck','login_controller@checkAuth')->name('authCheck');
