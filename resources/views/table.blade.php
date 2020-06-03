@@ -34,17 +34,12 @@
         }
     </style>
 </head>
-<!---<div class="container">
-    <div class="content">
-
-    </div>
-</div>--->
-<table border=1>
+<table border=2>
     <tr>
         <th rowspan="3">datums</th>
         <th rowspan="3">nummurs</th>
         <th rowspan="3">GT atskaite</th>
-        <th colspan="4">Energo neatkarīgā Atm.</th>
+        <th colspan="4">Energoneatkarīgā atm.</th>
         <th colspan="8">Dienas (z pārskata)</th>
         <th colspan="6">Sadalījums pa nodaļām</th>
         <th rowspan="3">Ieliktā maiņas nauda</th>
@@ -92,11 +87,9 @@
             }
         ?>
     </tr>
-    <tr>
+    <?php
 
-    </tr>
+    ?>
 </table>
-
-
 </body>
 </html>
