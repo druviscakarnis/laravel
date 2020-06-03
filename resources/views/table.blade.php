@@ -1,3 +1,6 @@
+<?php
+use App\Http\Controllers\table_controller;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +35,17 @@
         .title {
             font-size: 96px;
         }
+        .table tr,th,td{
+            border: 1px solid #000000;
+            text-align: center;
+        }
     </style>
 </head>
-<table border=2>
+<input type="date" name="from" id="from">
+<input type="date" name="to" id="to">
+<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)">
+
+<table class="table">
     <tr>
         <th rowspan="3">datums</th>
         <th rowspan="3">nummurs</th>
@@ -87,9 +98,18 @@
             }
         ?>
     </tr>
-    <?php
-
-    ?>
+    <tr>
+        <?php
+        $table = new table_controller();
+        $table->appendSum('','');
+        ?>
+    </tr>
 </table>
+<script type="text/javascript">
+    function filterByDate(from,to) {
+        console.log(from);
+        console.log(to);
+    }
+    </script>
 </body>
 </html>

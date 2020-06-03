@@ -11,33 +11,42 @@ class table_controller extends Controller{
    public function show()
    {
        $returnVar = "";
-       echo "<table border='2'><tr>";
+       //echo "<table border='2'><tr>";
 
-       $this->appendSum($returnVar);
+       //$this->appendSum();
 
-       echo "</tr></table>";
-       echo "<br>";
+       //echo "</tr></table>";
+       //echo "<br>";
        return view('table');
    }
+   public function getDate(Request $request){
+       $from = $request->input('from');
+       $to = $request->input('to');
+       dump($from);
+   }
 
-       private function appendSum($returnVar){
+       public function appendSum($from,$to){
+            if($from!=NULL & $to!=NULL){
+                $query = "SELECT `id`,`z_nr`,`date`,`gt` FROM ecr_cheques_z WHERE `date` >= '$from' AND `date` <= '$to'";
+           }else{
+                $query = "SELECT `id`,`z_nr`,`date`,`gt` FROM ecr_cheques_z";
+            }
            $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
-           $query = "SELECT `id`,`z_nr`,`date`,`gt` FROM ecr_cheques_z";
            $res = mysqli_query($db_conn, $query);
            while ($row = mysqli_fetch_array($res)) {
                $id = $row['id'];
-               // $returnVar = $returnVar."<td>".$row['date']."</td>";
+               //$returnVar = $returnVar."<td>".$row['date']."</td>";
                //$returnVar = $returnVar."<td>".$row['z_nr']."</td>";
                //$returnVar = $returnVar."<td>".$row['gt']."</td>";
                echo "<td>" . $row['date'] . "</td>";
                echo "<td>" . $row['z_nr'] . "</td>";
                echo "<td>" . $row['gt'] . "</td>";
-               $this->appendMoney($id, $returnVar);
+               $this->appendMoney($id);
            }
 
        }
 
-       private function appendMoney($id, $returnVar)
+       private function appendMoney($id)
        {
            $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
            $query = "SELECT `cheque_id`,`sum` FROM ecr_cheques_z_payment_values WHERE cheque_id='$id'";
@@ -50,12 +59,12 @@ class table_controller extends Controller{
                $sum = $sum + $row['sum'];
            }
            //$returnVar = $returnVar."<td>".$sum."</td>";
-           //echo "<td>".$sum."</td>";
-           $this->appendPVN($id, $returnVar);
+           echo "<td>".$sum."</td>";
+           $this->appendPVN($id);
 
        }
 
-       private function appendPVN($id, $returnVar)
+       private function appendPVN($id)
        {
            $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
            $query = "SELECT `cheque_id`,`sum`,`pvn_apliek_sum` FROM ecr_cheques_z_vat_values WHERE cheque_id='$id'";
@@ -69,19 +78,19 @@ class table_controller extends Controller{
                echo "<td>" . $row['sum'] . "</td>";
 
            }
-           $this->appendDepartamentDiv($id, $returnVar);
+           $this->appendDepartamentDiv($id);
        }
 
-       private function appendDepartamentDiv($id, $returnVar)
+       private function appendDepartamentDiv($id)
        {
            for ($i = 0; $i < 6; $i++) {
                //$returnVar = $returnVar."<td>_BLANK_</td>";
-               echo "<td>_BLANK_</td>";
+               echo "<td></td>";
            }
-           $this->appendInkas($id, $returnVar);
+           $this->appendInkas($id);
        }
 
-       private function appendInkas($id, $returnVar){
+       private function appendInkas($id){
            $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
            $query = "SELECT `mainas_nauda`,`inkas_nauda` FROM ecr_cheques_z_operations WHERE cheque_id='$id'";
            $res = mysqli_query($db_conn, $query);
@@ -92,11 +101,11 @@ class table_controller extends Controller{
                // $returnVar = $returnVar."<td>".$row['mainas_nauda']."</td>";
                echo "<td>" . $row['mainas_nauda'] . "</td>";
                echo "<td>" . $row['inkas_nauda'] . "</td>";
-               echo "<td>_BLANK_</td>";
+               echo "<td></td>";
                echo "<td>" . $row['mainas_nauda'] . "</td>";
 
            }
-           echo "<td>Next row " . $id . "</td>";
+           //echo "<td>Next row " . $id . "</td>";
            //$returnVar = $returnVar."<tr></tr>";
            //echo $returnVar;
            echo "<tr></tr>";
