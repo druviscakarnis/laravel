@@ -35,15 +35,32 @@ use App\Http\Controllers\table_controller;
         .title {
             font-size: 96px;
         }
+        .table{
+            padding-top:10px;
+        }
         .table tr,th,td{
             border: 1px solid #000000;
             text-align: center;
+        }
+        .selectBox{
+            padding-left: 10px;
         }
     </style>
 </head>
 <input type="date" name="from" id="from">
 <input type="date" name="to" id="to">
-<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)">
+<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)" >
+<select class="selectBox" name="ecr_id_select">
+    <?php
+    $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
+    $query = "SELECT `ecr_id` FROM ecr_cheques_z GROUP BY ecr_id";
+    $result = mysqli_query($db_conn,$query);
+    while($row = mysqli_fetch_array($result)){
+        echo "<option value=".$row['ecr_id'].">".$row['ecr_id']."</option>";
+    }
+    ?>
+</select>
+<input type="submit" name="submit_ecr" value="Meklēt">
 
 <table class="table">
     <tr>
@@ -99,16 +116,27 @@ use App\Http\Controllers\table_controller;
         ?>
     </tr>
     <tr>
-        <?php
+    <?php
         $table = new table_controller();
-        $table->appendSum('','');
+        $table->appendSum();
         ?>
     </tr>
 </table>
 <script type="text/javascript">
     function filterByDate(from,to) {
-        console.log(from);
-        console.log(to);
+        if(from!='' & to!='') {
+            var base = '{!! route('table') !!}';
+            var url = base + '?from=' + from + '&to=' + to;
+
+            window.location.href = url;
+        }else{
+            var base ='{!! route('table') !!}';
+            from = "all";
+            var url = base + '?from=' +from;
+
+            window.location.href = url;
+        }
+
     }
     </script>
 </body>
