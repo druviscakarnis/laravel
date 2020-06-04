@@ -17,6 +17,7 @@ class table_controller extends Controller{
        {
            $from = request()->input('from', '');
            $to = request()->input('to', '');
+           $ecr_id = request()->input('ecr_id','');
 
            if ($from!= '' & $to!='') {
                $query = "SELECT `id`,`z_nr`,`date`,`gt` FROM ecr_cheques_z WHERE `date` >= '$from' AND `date` <= '$to'";
@@ -25,6 +26,9 @@ class table_controller extends Controller{
            }else{
                $query = "SELECT * FROM ecr_cheques_z WHERE id=0";
            }
+            if($ecr_id!=''){
+                $query = "SELECT `id`,`z_nr`,`date`,`gt` FROM ecr_cheques_z WHERE ecr_id='$ecr_id'";
+            }
                $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
                $res = mysqli_query($db_conn, $query);
                while ($row = mysqli_fetch_array($res)) {

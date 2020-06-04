@@ -50,7 +50,7 @@ use App\Http\Controllers\table_controller;
 <input type="date" name="from" id="from">
 <input type="date" name="to" id="to">
 <input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)" >
-<select class="selectBox" name="ecr_id_select">
+<select id="selectBox" class="selectBox">
     <?php
     $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
     $query = "SELECT `ecr_id` FROM ecr_cheques_z GROUP BY ecr_id";
@@ -60,7 +60,7 @@ use App\Http\Controllers\table_controller;
     }
     ?>
 </select>
-<input type="submit" name="submit_ecr" value="Meklēt">
+<input type="submit" name="submit_ecr" value="Meklēt" onclick="getSelect();">
 
 <table class="table">
     <tr>
@@ -137,6 +137,15 @@ use App\Http\Controllers\table_controller;
             window.location.href = url;
         }
 
+    }
+    function getSelect(){
+        var selectBox = document.getElementById("selectBox");
+        var selectedVal = selectBox.options[selectBox.selectedIndex].value;
+
+        var base = '{!! route('table') !!}';
+        var url = base + '?ecr_id=' + selectedVal;
+
+        window.location.href = url;
     }
     </script>
 </body>
