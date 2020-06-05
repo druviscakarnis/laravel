@@ -49,8 +49,9 @@ use App\Http\Controllers\table_controller;
 </head>
 <input type="date" name="from" id="from">
 <input type="date" name="to" id="to">
-<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)" >
+<!--<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)" >-->
 <select id="selectBox" class="selectBox">
+    <option value="">Ecr_ID</option>
     <?php
     $db_conn = mysqli_connect('127.0.0.1', 'root', '', 'laravel_db');
     $query = "SELECT `ecr_id` FROM ecr_cheques_z GROUP BY ecr_id";
@@ -60,7 +61,8 @@ use App\Http\Controllers\table_controller;
     }
     ?>
 </select>
-<input type="submit" name="submit_ecr" value="Meklēt" onclick="getSelect();">
+<!--<input type="submit" name="submit_ecr" value="Meklēt" onclick="getSelect();">-->
+<input type="submit" name="submit" value="Filtrēt" onclick="filterByDate(document.getElementById('from').value,document.getElementById('to').value)" >
 
 <table class="table">
     <tr>
@@ -124,13 +126,24 @@ use App\Http\Controllers\table_controller;
 </table>
 <script type="text/javascript">
     function filterByDate(from,to) {
-        if(from!='' & to!='') {
-            var base = '{!! route('table') !!}';
+        var selectBox = document.getElementById("selectBox");
+        var selectedVal = selectBox.options[selectBox.selectedIndex].value;
+        var base = '{!! route('table') !!}';
+        if(from!='' & to!='' & selectedVal!='') {
+            var url = base + '?from=' + from + '&to=' + to +'&ecr_id=' + selectedVal;
+
+            window.location.href = url;
+        }
+        if(from!='' & to!='' & selectedVal==''){
             var url = base + '?from=' + from + '&to=' + to;
 
             window.location.href = url;
-        }else{
-            var base ='{!! route('table') !!}';
+        }
+        if(from=='' & to=='' & selectedVal!=''){
+            var url = base + '?ecr_id='+selectedVal;
+
+            window.location.href = url;
+        } if(from=='' & to=='' & selectedVal==''){
             from = "all";
             var url = base + '?from=' +from;
 
@@ -141,6 +154,7 @@ use App\Http\Controllers\table_controller;
     function getSelect(){
         var selectBox = document.getElementById("selectBox");
         var selectedVal = selectBox.options[selectBox.selectedIndex].value;
+
 
         var base = '{!! route('table') !!}';
         var url = base + '?ecr_id=' + selectedVal;
